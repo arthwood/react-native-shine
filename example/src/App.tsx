@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Shine, ShineGroup, useOrientation } from 'react-native-shine';
+import { View, StyleSheet } from 'react-native';
+import { Shine, useOrientation } from 'react-native-shine';
 import { charmander, pokemonCardMaskGrad } from './img';
 import { useSharedValue } from 'react-native-reanimated';
 
 export default function App() {
   const orientation = useOrientation();
   const touchPosition = useSharedValue<[number, number]>([0.0, 0.0]);
-  const rotation = useRef<number>(0);
+  const rotation = useRef<number>(1.9);
   const nh = 0.5;
   const nw = nh;
 
@@ -37,12 +37,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    const id = setInterval(() => {
-      moveInCircle();
-    }, 50);
-    return () => {
-      clearInterval(id);
-    };
+    moveInCircle();
   });
 
   return (
@@ -72,19 +67,6 @@ export default function App() {
         useTouchControl={true}
         touchPosition={touchPosition}
       />
-      <ShineGroup
-        glareOptions={glareOptions}
-        // addHolo={true}
-        useTouchControl={true}
-        touchPosition={touchPosition}
-      >
-        <View style={{ backgroundColor: 'red' }}>
-          <View>
-            <Text>some example text inside the inner View</Text>
-          </View>
-          <Text>some example text outside the inner View</Text>
-        </View>
-      </ShineGroup>
     </View>
   );
 }

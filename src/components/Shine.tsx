@@ -17,6 +17,7 @@ import {
   textureBindGroupLayout,
   type BufferDataMap,
   bufferData,
+  zOffsetBindGroupLayout,
 } from '../shaders/bindGroupLayouts';
 import Animated, {
   SensorType,
@@ -123,14 +124,14 @@ export function Shine({
   //TODO: add once again, when the wgpu issues are fixed :3
 
   const animatedStyle = useAnimatedStyle(() => {
-    // const rotX = rotationShared.value[0] * 10;
-    // const rotY = rotationShared.value[1] * 10;
+    const rotX = rotationShared.value[0] * 10;
+    const rotY = rotationShared.value[1] * 10;
 
     return {
       transform: [
-        { perspective: 300 },
-        // { rotateX: `${-rotX}deg` },
-        // { rotateY: `${rotY}deg` },
+        { perspective: 100 },
+        { rotateX: `${-rotX}deg` },
+        { rotateY: `${rotY}deg` },
         // { rotateZ: `${rotX * 5}deg` },
       ],
     };
@@ -269,7 +270,7 @@ export function Shine({
     const rotationBuffer = bufferManager.addBuffer(
       root,
       'rotationBuffer',
-      d.vec3f(0.0)
+      d.vec3f(0, 0, 0)
     );
 
     const rotationBindGroup = createRotationValuesBindGroup(
@@ -296,18 +297,30 @@ export function Shine({
     );
     const colorMaskBindGroup = createColorMaskBindGroup(root, colorMaskBuffer);
 
+    const zOffsetBuffer = bufferManager.addBuffer(
+      root,
+      'zOffsetBuffer',
+      d.f32(0)
+    );
+
+    const zOffsetBindGroup = root.createBindGroup(zOffsetBindGroupLayout, {
+      zOffsetBuffer,
+    });
+
     const glareBGP: BindGroupPair[] = createBindGroupPairs(
       [
         textureBindGroupLayout,
         rotationValuesBindGroupLayout,
         glareOptionsBindGroupLayout,
         colorMaskBindGroupLayout,
+        zOffsetBindGroupLayout,
       ],
       [
         imageTextureBindGroup,
         rotationBindGroup,
         glareOptionsBindGroup,
         colorMaskBindGroup,
+        zOffsetBindGroup,
       ]
     );
 
@@ -394,6 +407,7 @@ export function Shine({
       rot[1] = rotationShared.value[1];
       rot[2] = rotationShared.value[2];
       rotationBuffer.write(rot);
+      zOffsetBuffer.write(d.i32(4));
 
       view = context.getCurrentTexture().createView();
       initialAttachment = {

@@ -45,9 +45,17 @@ export const colorMaskBindGroupLayout = tgpu.bindGroupLayout({
   mask: { uniform: colorMaskSchema },
 });
 
+export const zOffsetBindGroupLayout = tgpu.bindGroupLayout({
+  zOffsetBuffer: { uniform: d.f32 },
+});
+
 export const bufferData = {
   rotationBuffer: {
     schema: d.vec3f,
+    usage: 'uniform',
+  },
+  zOffsetBuffer: {
+    schema: d.f32,
     usage: 'uniform',
   },
   glareBuffer: {

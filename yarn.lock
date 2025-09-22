@@ -11198,7 +11198,7 @@ __metadata:
     react-native-reanimated: ^4.0.1
     react-native-view-shot: ^4.0.3
     react-native-web: ^0.20.0
-    react-native-wgpu: ^0.2.0
+    react-native-wgpu: ^0.2.8
     react-native-worklets: ^0.4.1
     typegpu: ^0.7.0
   languageName: unknown
@@ -11233,7 +11233,7 @@ __metadata:
     react-native-orientation-locker: ^1.7.0
     react-native-reanimated: ^4.0.1
     react-native-view-shot: ^4.0.3
-    react-native-wgpu: ^0.2.3
+    react-native-wgpu: ^0.2.8
     react-native-worklets: ^0.4.1
     release-it: ^17.10.0
     typegpu: ^0.7.0
@@ -11243,7 +11243,7 @@ __metadata:
     react: "*"
     react-native: "*"
     react-native-reanimated: ^4.0.1
-    react-native-wgpu: ^0.2.3
+    react-native-wgpu: ^0.2.8
     react-native-worklets: ^0.4.1
     typegpu: ^0.7.0
   languageName: unknown
@@ -11280,23 +11280,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-wgpu@npm:^0.2.0":
-  version: 0.2.1
-  resolution: "react-native-wgpu@npm:0.2.1"
+"react-native-wgpu@npm:^0.2.8":
+  version: 0.2.8
+  resolution: "react-native-wgpu@npm:0.2.8"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: e1cf9dc74cae7fa403293d02355a91b8c23472b7a5cd8db9f71e6478fc8393253f15a17378d24714f6483e7a9f72a3d624cc3d31f3f689ede2070b3349fe79ea
-  languageName: node
-  linkType: hard
-
-"react-native-wgpu@npm:^0.2.3":
-  version: 0.2.4
-  resolution: "react-native-wgpu@npm:0.2.4"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 8d665cfe7e212a71182e641556087339732beea9b76e4458bbaf2397b40077dfa0d01d7208a1e9c6d4e977fc6db042ce9a499829041fdc9d25cfff4c603e88d2
+  checksum: 09e5a06339bee90754c3d4394fe68295509e6bff85d2a0de360f9a252ebae0988ee854527e9c22d83b9be7121becb925e3b8a37e3f475a524cee4c69cb445083
   languageName: node
   linkType: hard
 
